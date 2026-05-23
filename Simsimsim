@@ -627,7 +627,7 @@ local ContentProvider = game:GetService("ContentProvider")
 local TextService = game:GetService("TextService")
 local Mouse
 
-local selectedColor = Color3.new(0.321569, 0.333333, 1)
+local selectedColor = Color3.fromRGB(212,175,55)
 local deselectedColor = Color3.new(0.8, 0.8, 0.8)
 local layoutOrderNum = 999999999
 local mainClosing = false
@@ -681,6 +681,117 @@ local showType = true
 local pauseLogging = false
 local maxLogCount = 500
 local logCount = 0
+
+-- ============================================================
+--  RECOLOR PATCH — Black & Gold "StayCools" Theme
+--  วางต่อจากโค้ดเดิม หรือแทนที่ค่าสีทีละจุดก็ได้
+-- ============================================================
+
+local GOLD  = Color3.fromRGB(212, 175, 55)
+local GOLD2 = Color3.fromRGB(255, 215, 80)   -- highlight เพิ่มเติม
+local BLACK = Color3.fromRGB(8,   8,   8)
+local DARK  = Color3.fromRGB(14,  14,  14)
+local DARK2 = Color3.fromRGB(20,  20,  20)
+local PANEL = Color3.fromRGB(11,  11,  11)
+local WHITE = Color3.fromRGB(240, 240, 240)
+
+-- Background (หน้าต่างหลัก)
+Background.BackgroundColor3         = BLACK
+
+-- TopBar
+TopBar.BackgroundColor3             = DARK
+
+-- Simple (title text)
+Simple.TextColor3                   = GOLD
+Simple.Text                         = "SimpleSpy  ✦ StayCools"
+
+-- LeftPanel
+LeftPanel.BackgroundColor3          = DARK2
+
+-- LogList — ไม่ต้องเปลี่ยน (transparent)
+
+-- RemoteTemplate ColorBar → ทอง (มีอยู่แล้วในโค้ดเดิม แต่ให้แน่ใจ)
+ColorBar.BackgroundColor3           = GOLD
+
+-- Text ชื่อ remote
+Text.TextColor3                     = WHITE
+
+-- Button remote (ปุ่มกด)
+Button.BackgroundColor3             = BLACK
+Button.BackgroundTransparency       = 0.55
+
+-- RightPanel
+RightPanel.BackgroundColor3         = PANEL
+
+-- CodeBox
+CodeBox.BackgroundColor3            = Color3.fromRGB(6, 6, 6)
+
+-- FunctionTemplate ColorBar
+ColorBar_2.BackgroundColor3         = GOLD
+
+-- Text ชื่อ func
+Text_2.TextColor3                   = WHITE
+
+-- Button func
+Button_2.BackgroundColor3           = BLACK
+Button_2.BackgroundTransparency     = 0.55
+
+-- CloseButton / Maximize / Minimize
+for _, btn in ipairs({ CloseButton, MaximizeButton, MinimizeButton }) do
+    btn.BackgroundColor3 = DARK
+end
+
+-- DiscordButton → เปลี่ยนเป็นทอง-ดำ (optional: เก็บสีเดิมก็ได้)
+DiscordButton.BackgroundColor3      = Color3.fromRGB(30, 30, 30)
+DiscordButton.TextColor3            = GOLD
+
+-- DeltaButton
+DeltaButton.BackgroundColor3        = Color3.fromRGB(30, 30, 30)
+DeltaButton.TextColor3              = GOLD
+
+-- ToolTip
+ToolTip.BackgroundColor3            = Color3.fromRGB(10, 10, 10)
+ToolTip.BorderColor3                = GOLD
+
+TextLabel.TextColor3                = WHITE
+
+-- BlockPanel
+BlockPanel.BackgroundColor3         = Color3.fromRGB(10, 10, 10)
+BPDiv.BackgroundColor3              = GOLD
+BPTitle.TextColor3                  = GOLD
+BPStatus.TextColor3                 = Color3.fromRGB(150, 140, 100)
+
+BPBlockBtn.BackgroundColor3         = Color3.fromRGB(160, 40, 40)
+BPBlockBtn.TextColor3               = WHITE
+
+BPClearBtn.BackgroundColor3         = Color3.fromRGB(30, 110, 60)
+BPClearBtn.TextColor3               = WHITE
+
+-- Open Button (ปุ่มลอยข้างซ้าย)
+OBFrame.BackgroundColor3            = BLACK
+OBStroke.Color                      = GOLD
+OBLabel.TextColor3                  = GOLD
+
+-- selectedColor / deselectedColor (ใช้ใน logic การเลือก remote)
+selectedColor   = GOLD
+deselectedColor = Color3.fromRGB(180, 175, 160)
+
+-- UIStroke สำหรับ Background (เพิ่ม border ทอง)
+local BgStroke = Instance.new("UIStroke")
+BgStroke.Color          = GOLD
+BgStroke.Thickness      = 1.5
+BgStroke.Transparency   = 0.3
+BgStroke.Parent         = Background
+
+-- UICorner เล็กๆ ให้ดูเนียน
+local BgCorner = Instance.new("UICorner")
+BgCorner.CornerRadius   = UDim.new(0, 6)
+BgCorner.Parent         = Background
+
+local RpCorner = Instance.new("UICorner")
+RpCorner.CornerRadius   = UDim.new(0, 4)
+RpCorner.Parent         = RightPanel
+
 
 function SimpleSpy:ArgsToString(method, args)
 	assert(typeof(method) == "string", "string expected, got " .. typeof(method))
@@ -1797,7 +1908,7 @@ if not _G.SimpleSpyExecuted then
 			end
 			pcall(function()
 				game:GetService("StarterGui"):SetCore("SendNotification", {
-					Title = "SimpleSpy Modded By Fenzoxy",
+					Title = "SimpleSpy Modded By StayCools",
 					Text = "Loaded! Executor: " .. tostring(executorName),
 					Duration = 5,
 				})
@@ -1861,10 +1972,10 @@ if not _G.SimpleSpyExecuted then
 			end)
 		end
 		OBBtn.MouseEnter:Connect(function()
-			TweenService:Create(OBFrame, TweenInfo.new(0.15), { BackgroundColor3 = Color3.fromRGB(55, 54, 62) }):Play()
+			TweenService:Create(OBFrame, TweenInfo.new(0.15), { BackgroundColor3 = Color3.fromRGB(30, 25, 5) }):Play()
 		end)
 		OBBtn.MouseLeave:Connect(function()
-			TweenService:Create(OBFrame, TweenInfo.new(0.15), { BackgroundColor3 = Color3.fromRGB(37, 36, 42) }):Play()
+			TweenService:Create(OBFrame, TweenInfo.new(0.15), { BackgroundColor3 = Color3.fromRGB(8, 8, 8) }):Play()
 		end)
 
 		-- Discord button logic
