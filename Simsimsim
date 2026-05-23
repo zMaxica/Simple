@@ -1,4 +1,3 @@
--- cd
 if _G.SimpleSpyExecuted and type(_G.SimpleSpyShutdown) == "function" then
 	print(pcall(_G.SimpleSpyShutdown))
 end
@@ -245,8 +244,8 @@ OBLabel.BackgroundTransparency = 1
 OBLabel.Position = UDim2.new(0, 0, 0, 0)
 OBLabel.Size = UDim2.new(1, 0, 1, 0)
 OBLabel.Font = Enum.Font.GothamBold
-OBLabel.Text = " ❄ "
-OBLabel.TextSize = 12
+OBLabel.Text = " ♛ "
+OBLabel.TextSize = 50
 OBLabel.TextColor3 = Color3.fromRGB(212, 175, 55)
 
 local OBBtn = Instance.new("TextButton")
@@ -704,7 +703,7 @@ TopBar.BackgroundColor3             = DARK
 
 -- Simple (title text)
 Simple.TextColor3                   = GOLD
-Simple.Text                         = "SimpleSpy Modded By StayCools"
+Simple.Text                         = "✦ StayCools Remote Spy ✦"
 
 -- LeftPanel
 LeftPanel.BackgroundColor3          = DARK2
@@ -894,16 +893,12 @@ function scaleToolTip()
 	ToolTip.Size = UDim2.new(0, size.X + 4, 0, size.Y + 4)
 end
 
-function onToggleButtonHover()
-	if not toggle then
-		TweenService:Create(Simple, TweenInfo.new(0.5), { TextColor3 = Color3.fromRGB(252, 51, 51) }):Play()
-	else
-		TweenService:Create(Simple, TweenInfo.new(0.5), { TextColor3 = Color3.fromRGB(68, 206, 91) }):Play()
-	end
+function onToggleButtonUnhover()
+    TweenService:Create(Simple, TweenInfo.new(0.5), { TextColor3 = Color3.fromRGB(212, 175, 55) }):Play()
 end
 
 function onToggleButtonUnhover()
-	TweenService:Create(Simple, TweenInfo.new(0.5), { TextColor3 = Color3.fromRGB(255, 255, 255) }):Play()
+	TweenService:Create(Simple, TweenInfo.new(0.5), { TextColor3 = Color3.fromRGB(212, 175, 55) }):Play()
 end
 
 function onXButtonHover()
