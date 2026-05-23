@@ -224,7 +224,7 @@ OBFrame.Name = "OBFrame"
 OBFrame.Parent = OpenButtonGui
 OBFrame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
 OBFrame.BorderSizePixel = 0
-OBFrame.Position = UDim2.new(0, 10, 0.5, -22)
+OBFrame.Position = UDim2.new(0, 10, 0, 150)
 OBFrame.Size = UDim2.new(0, 80, 0, 80)
 OBFrame.Active = true
 
