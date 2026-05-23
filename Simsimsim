@@ -237,16 +237,14 @@ OBStroke.Color = Color3.fromRGB(212, 175, 55)
 OBStroke.Thickness = 2
 OBStroke.Parent = OBFrame
 
-local OBLabel = Instance.new("TextLabel")
+local OBLabel = Instance.new("ImageLabel")
 OBLabel.Name = "OBLabel"
 OBLabel.Parent = OBFrame
 OBLabel.BackgroundTransparency = 1
-OBLabel.Position = UDim2.new(0, 0, 0, 0)
-OBLabel.Size = UDim2.new(1, 0, 1, 0)
-OBLabel.Font = Enum.Font.GothamBold
-OBLabel.Text = " ♛ "
-OBLabel.TextSize = 50
-OBLabel.TextColor3 = Color3.fromRGB(212, 175, 55)
+OBLabel.Position = UDim2.new(0, 6, 0, 6)
+OBLabel.Size = UDim2.new(0, 32, 0, 32)
+OBLabel.Image = "rbxassetid://95636384330694"
+OBLabel.ImageColor3 = Color3.fromRGB(212, 175, 55)
 
 local OBBtn = Instance.new("TextButton")
 OBBtn.Name = "OBBtn"
@@ -703,7 +701,7 @@ TopBar.BackgroundColor3             = DARK
 
 -- Simple (title text)
 Simple.TextColor3                   = GOLD
-Simple.Text                         = "✦ StayCools Remote Spy ✦"
+Simple.Text                         = "❄ StayCools Remote Spy ❄"
 
 -- LeftPanel
 LeftPanel.BackgroundColor3          = DARK2
@@ -770,7 +768,7 @@ BPClearBtn.TextColor3               = WHITE
 -- Open Button (ปุ่มลอยข้างซ้าย)
 OBFrame.BackgroundColor3            = BLACK
 OBStroke.Color                      = GOLD
-OBLabel.TextColor3                  = GOLD
+OBLabel.ImageColor3                  = GOLD
 
 -- selectedColor / deselectedColor (ใช้ใน logic การเลือก remote)
 selectedColor   = GOLD
@@ -1959,10 +1957,10 @@ if not _G.SimpleSpyExecuted then
 				if dragMoved then return end
 				Background.Visible = not Background.Visible
 				if Background.Visible then
-					OBLabel.TextColor3 = Color3.fromRGB(100, 255, 160)
+					OBLabel.ImageColor3 = Color3.fromRGB(100, 255, 160)
 					OBStroke.Color = Color3.fromRGB(100, 255, 160)
 				else
-					OBLabel.TextColor3 = Color3.fromRGB(212, 175, 55)
+					OBLabel.ImageColor3 = Color3.fromRGB(212, 175, 55)
 					OBStroke.Color = Color3.fromRGB(212, 175, 55)
 				end
 			end)
