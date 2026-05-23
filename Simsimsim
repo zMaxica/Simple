@@ -1998,7 +1998,7 @@ if not _G.SimpleSpyExecuted then
 			end)
 		end)
 		DeltaButton.MouseEnter:Connect(function()
-			TweenService:Create(DeltaButton, TweenInfo.new(0.15), { BackgroundColor3 = Color3.fromRGB((55, 50, 15) }):Play()
+			TweenService:Create(DeltaButton, TweenInfo.new(0.15), { BackgroundColor3 = Color3.fromRGB(55, 50, 15) }):Play()
 		end)
 		DeltaButton.MouseLeave:Connect(function()
 			TweenService:Create(DeltaButton, TweenInfo.new(0.15), { BackgroundColor3 = Color3.fromRGB(30, 30, 30) }):Play()
